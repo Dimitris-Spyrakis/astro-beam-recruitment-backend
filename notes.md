@@ -26,5 +26,13 @@ the PostgreSQL documentation I managed to do this task despite
 
 this being my first experience with PSQL.
 
-&#x20;
+
+
+**Concerning .fits**
+
+
+
+I think using file pointers is much faster than searching the whole
+
+BLOB for the wanted data.
 
