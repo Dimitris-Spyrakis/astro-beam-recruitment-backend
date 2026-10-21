@@ -8,7 +8,7 @@ CREATE TABLE users(
 CREATE TABLE observations (
   id INT PRIMARY KEY,
   user_id INT,
-  center_freq_mhz FLOAT NOT NULL,
+  center_freq_mhz FLOAT NOT NULL DEFAULT 1420.405,
   status TEXT CONSTRAINT status_check CHECK (status IN ('PENDING', 'PROCESSING', 'COMPLETED', 'FAILED')),
   fits_file_url TEXT,
   created_at timestamp,
