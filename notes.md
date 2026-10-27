@@ -88,7 +88,7 @@ the discussion of alternative code implementations with fellow programmers.
 
 ###### **Connection and Validation solutions**
 
-&#x20;I think the clean part about my implementaion is getting handled by the psycopg3 module 
+&#x20;I think the clean part about my implementaion is getting handled by the psycopg3 module
 
 itself. With the Supabase connection string as the only input parameter the process becomes
 
@@ -102,7 +102,19 @@ HTTPExteptions, but the validation also happens within the schema.py where the c
 
 itself accepts only objects of a certain frequency range. I also saw an alternative where a method
 
-is implemented within the "Observations" class but I think the other two validation checks already 
+is implemented within the "Observations" class but I think the other two validation checks already
 
 work things out.
+
+
+
+**Note**
+
+&#x20;Files of .venv sort have been created outside my working directory (outside astro-beam-recruitment-backend).
+
+I haven't really understood where these file should be created (I had much a problem understanding them/how uv works) 
+
+so I didn't commit them fearing it would cause issues with my current repository. If there is any problem running
+
+the code this could be one of the possible culprits.
 
