@@ -86,6 +86,8 @@ the discussion of alternative code implementations with fellow programmers.
 
 &#x20;
 
+###### **Connection and Validation solutions**
+
 &#x20;I think the clean part about my implementaion is getting handled by the psycopg3 module 
 
 itself. With the Supabase connection string as the only input parameter the process becomes
