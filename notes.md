@@ -1,16 +1,16 @@
-#####**Part 1**
+##### **Part 1**
 
 
 &#x20;First I opened a Supabase server and in the SQL editor I created 2 scripts one for creating the necessary tables and one for inserting some test values or ,via selections, checking the contents of my tables each time. I wanted to implement both ENUM and TEXT variables for the user.role and the observations.status. The two tables have ID as their primary key while the "observations" table has a direct dependency on the user_id such the FOREIGN KEY constraint. I then created an enum for role giving a "role" type attribute to the "users" table while for the observations I used the CONSTRAINED mechanism. Both of these implementations required little internet searching but still challenged me a bit to understand how they work and why the compiler kept showing me erros. Although overwhelming due to my first contact with PostgreSQL and the Supabase server I found a lot of material online from people having similar issues as me so I managed to fit it all together at the end.  
 
 
-######**Concerning .fits**
+###### **Concerning .fits**
 
 If I understand the structure of .fits files correctly then I think that the header before each data section is a much faster and easier way of finding specific data through the whole file. While BLOBs can fit a lot of data, managing through it seems much more difficult. 
 
 
 
-#####**Part 2**
+##### **Part 2**
 
 
 &#x20;This was one of the most challenging bits of the whole task. I had to do a deep dive into what everything is and how it works. It required a lot of digging into Internet forums, some YouTube videos and the modules' documentations to really see how everything is structured. Once I had an idea of each components work (Pydantic, FastAPI, psycopg) I had to "merge" them together while making sure my code stays clean and readable. I then started to implement the restpoints, though I saw many people defining the required functions with "async". I think this is not a big of an issue now since the functionality of the API is very simple and not many processes run at the same time (if I understand the concept of synchronous vs asynchronous functions correctly). I started with implementing each restpoint with some dummy values and once I got the logic down I then procceeded with the psycopg3 syntax.
@@ -24,12 +24,12 @@ If I understand the structure of .fits files correctly then I think that the hea
 
 
 
-#####**Part 3**
+##### **Part 3**
 
 
 &#x20;In a new script I implemented the autonomous worker that works around using two functions. One is fetches the ID of the oldest pending observation or processing (if the program stops with no pending observations left) and the other uses the ID to update the specific observation's status. Through the process each required timestamp is updated  and the according URI is attached to each completed observation. It was difficult to understand how everything will work together and I still haven't fully built it because I couldn't implement the router logic. I used some Internet resources, though it was very limited and tried to mimic the implementation of Part 2. With the help of my collagues I was also able to tackle down some specific exceptions and run-time problems polishing my code as much as I could.
 
 
-######**Concurrency Issues**
+###### **Concurrency Issues**
 
 &#x20;If some data happen to arrive at the exact same time then we would have a problem: a) the timestamp is exactly the same and b) which observation should get the "new ID value"? I think the answer lies to the Isolation mechanism which manages how readers and writers view or block each other based on 5 different levels.
