@@ -1,4 +1,5 @@
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, Field
+
 
 class Observations(BaseModel):
     id: int
@@ -11,9 +12,9 @@ class Observations(BaseModel):
     started_at: str
     completed_at: str
 
-    '''
+    """
     def observation_frequency(freq):
         if freq <1400.0 or freq>1440.0:
             raise ValueError(f"out of range frequency! {freq}"  )
         return freq
-    '''
+    """
