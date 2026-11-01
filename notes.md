@@ -1,4 +1,4 @@
-#### **Part 1**
+### **Part 1**
 
 
 
@@ -6,13 +6,13 @@
 
 
 
-###### Concerning .fits
+#### Concerning .fits
 
 If I understand the structure of .fits files correctly then I think that the header before each data section is a much faster and easier way of finding specific data through the whole file. While BLOBs can fit a lot of data, managing through it seems much more difficult.
 
 
 
-#### Part 2
+### Part 2
 
 
 
@@ -21,14 +21,14 @@ One of the challenges was learning tuples again and how to insert, update and fe
 
 
 
-###### Connection and Validation solutions
+#### Connection and Validation solutions
 
 &#x20;I think the clean part about my implementation is getting handled by the psycopg3 module itself. With the Supabase connection string as the only input parameter the process becomes rather simple yet directed.
 I saw many ways to structure validation errors, specifically 3, and I implemented all of them . The parameters inputed by the user (at post/observations) are checked within the main.py usingmHTTPExteptions, but the validation also happens within the schema.py where the class "Observations" itself accepts only objects of a certain frequency range. I also saw an alternative where a method is implemented within the "Observations" class but I think the other two validation checks already work things out.
 
 
 
-#### Part 3
+### Part 3
 
 
 
@@ -36,7 +36,7 @@ I saw many ways to structure validation errors, specifically 3, and I implemente
 
 
 
-###### Concurrency Issues
+#### Concurrency Issues
 
 &#x20;If some data happen to arrive at the exact same time then we would have a problem: a) the timestamp is exactly the same and b) which observation should get the "new ID value"? I think the answer lies to the Isolation mechanism which manages how readers and writers view or block each other based on 5 different levels.
 
