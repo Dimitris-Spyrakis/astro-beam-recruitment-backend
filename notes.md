@@ -43,5 +43,11 @@ I think the most significant part of this code is the assignment of unique IDS w
 
 ### Concurrency Issues
 
-&emsp;If some data happen to arrive at the exact same time then we would have a problem: a) the timestamp is exactly the same and b) which observation should get the "new ID value"? I think the answer lies to the Isolation mechanism which manages how readers and writers view or block each other based on 5 different levels.
+&emsp;If some data happen to arrive at the exact same time then we would have a problem: 
+
+* the timestamp is exactly the same and 
+* which observation should get the "new ID value"? 
+
+I think the answer lies to the Isolation mechanism which manages how readers and writers view or block each other based on 5 different levels.
+
 
