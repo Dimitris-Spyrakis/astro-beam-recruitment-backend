@@ -35,7 +35,8 @@ I think the most significant part of this code is the assignment of unique IDS w
 ### Connection and Validation solutions
 
 &emsp;I think the clean part about my implementation is getting handled by the psycopg3 module itself. With the Supabase connection string as the only input parameter the process becomes rather simple yet directed.
- I saw many ways to structure validation errors, specifically 3, and I implemented all of them . The parameters inputed by the user (at post/observations) are checked within the main.py usingmHTTPExteptions, but the validation also happens within the schema.py where the class "Observations" itself accepts only objects of a certain frequency range. I also saw an alternative where a method is implemented within the "Observations" class but I think the other two validation checks already work things out.
+
+ I saw many ways to structure validation errors, specifically 3, I implemented 2 of them. The parameters inputed by the user (at post/observations) are checked within the 'main.py' usingmHTTPExteptions, but the validation also happens within the schema.py where the class "Observations" itself accepts only objects of a certain frequency range. I also saw an alternative where a method is implemented within the "Observations" class but I think the other two validation checks already work things out.
 
 
 
@@ -43,7 +44,9 @@ I think the most significant part of this code is the assignment of unique IDS w
 
 
 
-&emsp;In a new script I implemented the autonomous worker that works around using two functions. One fetches the ID of the oldest pending observation or processing (if the program stops with no pending observations left) and the other uses the ID to update the specific observation's status. Through the process each required timestamp is updated  and the according URI is attached to each completed observation. It was difficult to understand how everything will work together and I still haven't fully built it because I couldn't implement the router logic. I used some Internet resources, though it was very limited and tried to mimic the implementation of Part 2. With the help of my collagues I was also able to tackle down some specific exceptions and run-time problems polishing my code as much as I could.
+&emsp;In a new script I implemented the autonomous worker that works around using two functions. One fetches the ID of the oldest pending observation or processing (if the program stops with no pending observations left) and the other uses the ID to update the specific observation's status. Through the process each required timestamp is updated  and the according URI is attached to each completed observation.  
+
+It was difficult to understand how everything will work together and I still haven't fully built it because I couldn't implement the router logic. I used some Internet resources, though it was very limited and tried to mimic the implementation of Part 2. With the help of my collagues I was also able to tackle down some specific exceptions and run-time problems polishing my code as much as I could.
 
 
 
