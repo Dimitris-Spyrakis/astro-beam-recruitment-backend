@@ -3,10 +3,16 @@ from datetime import datetime
 from typing import Annotated
 
 import psycopg
-from fastapi import APIRouter, Depends, FastAPI
+from fastapi import APIRouter, BackgroundTasks, Depends, FastAPI
+from fastapi_mail import ConnectionConfig, FastMail, MessageSchema, MessageType
+from pydantic import BaseModel, EmailStr
 
-router = APIRouter()
 app = FastAPI()
+
+
+# -------app----------
+app = FastAPI()
+router = APIRouter()
 
 
 # ------psycopg connections-----------
@@ -18,6 +24,46 @@ def get_connection():
 
 
 Conn = Annotated[psycopg.Connection, Depends(get_connection)]
+
+
+# -------------Email-----------------------
+class EmailSchema(BaseModel):
+    email: list[EmailStr]
+
+
+conf = ConnectionConfig(
+    MAIL_USERNAME="astro",
+    MAIL_PASSWORD="pwd",
+    MAIL_FROM="astro@gmail.com",
+    MAIL_SERVER="smtp.gmail.com",
+    MAIL_PORT=587,
+    MAIL_STARTTLS=False,
+    MAIL_SSL_TLS=False,
+    MAIL_FROM_NAME="Jim",
+    SUPPRESS_SEND=True,
+    USE_CREDENTIALS=False,
+    VALIDATE_CERTS=False,
+)
+
+
+# --------------Sending Email-----------------
+async def send_in_background(
+    cond: bool, email: EmailSchema, background_tasks: BackgroundTasks
+) -> str:
+    if bool:
+        message = MessageSchema(
+            subject="Observation Complete",
+            recipients=email,
+            body="Simple background task",
+            subtype=MessageType.plain,
+        )
+
+        fm = FastMail(conf)
+
+        background_tasks.add_task(fm.send_message, message)
+
+        print("Email sent")
+        print(message)
 
 
 # ---------Processing----------
@@ -46,7 +92,7 @@ def poll_oldest_obs_id(conn: Conn) -> int:
 
 
 # ---------Completed----------
-def polling_oldest_obs_comp(conn: Conn, id: int):
+async def polling_oldest_obs_comp(conn: Conn, id: int) -> bool:
     with conn.cursor() as cur:
         cur.execute(
             "UPDATE observations "
@@ -59,18 +105,25 @@ def polling_oldest_obs_comp(conn: Conn, id: int):
             },
         )
         conn.commit()
+        return True
 
 
 # ------------------Polling---------------
 @app.get("/")
-async def main(conn: Conn):
+async def main(conn: Conn, backTask: BackgroundTasks):
+    email = ["random@gmail.com"]
     while True:
+        # fetching oldest observation id
         obs_id = poll_oldest_obs_id(conn)
 
         # simulating data processing
         await asyncio.sleep(3)
 
-        polling_oldest_obs_comp(conn, obs_id)
+        # marking it as completed
+        cond = await polling_oldest_obs_comp(conn, obs_id)
+
+        # check completed status to send email
+        await send_in_background(cond, email, backTask)
 
         # poll cycle repetition
         await asyncio.sleep(5)

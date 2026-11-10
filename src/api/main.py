@@ -11,11 +11,6 @@ from fastapi import Depends, FastAPI, HTTPException
 # ----Attempt to connect the router with the app--------
 SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
 sys.path.append(os.path.dirname(SCRIPT_DIR))
-
-from workers.telescope_poller import router
-
-app.include_router(router)
-
 """
 
 
