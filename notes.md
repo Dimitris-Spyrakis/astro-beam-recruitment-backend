@@ -10,8 +10,7 @@ First I opened a Supabase server and in the SQL editor I created 2 scripts one f
 
 I wanted to implement both **ENUM** and **TEXT** variables for the *user.role* and the *observations.status*. 
 
-The two tables have ID as their primary key while the *"Observations"* table has a direct dependency on the *user_id* hence the **FOREIGN KEY** constraint.  
-I then created an enum for role giving a "role" type attribute to the "users" table while for the observations I used the **CONSTRAINED** mechanism. 
+The two tables have ID as their primary key while the *"Observations"* table has a direct dependency on the *user_id* hence the **FOREIGN KEY** constraint. I then created an enum for role giving a "role" type attribute to the "users" table while for the observations I used the **CONSTRAINED** mechanism. 
 
 Both of these implementations required little internet searching but still challenged me a bit to understand how they work and why the compiler kept showing me erros. 
 
