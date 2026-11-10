@@ -61,7 +61,7 @@ I think the most significant part of this code is the assignment of unique IDs w
 
 
 ## Part 3
----
+
 
 
 &emsp;In a new script I implemented the autonomous worker that works around using two functions. One fetches the ID of the oldest pending observation or processing (if the program stops with no pending observations left) and the other uses the ID to update the specific observation's status. Through the process each required timestamp is updated  and the according URI is attached to each completed observation.  
