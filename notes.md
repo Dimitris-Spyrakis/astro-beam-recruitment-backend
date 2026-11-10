@@ -6,7 +6,7 @@
 
 
 
-First I opened a Supabase server and in the SQL editor I created 2 scripts one for creating the necessary tables and one for inserting some test values or ,via selections, checking the contents of my tables each time. 
+&emsp;First I opened a Supabase server and in the SQL editor I created 2 scripts one for creating the necessary tables and one for inserting some test values or ,via selections, checking the contents of my tables each time. 
 
 I wanted to implement both **ENUM** and **TEXT** variables for the *user.role* and the *observations.status*. 
 
@@ -28,7 +28,7 @@ If I understand the structure of .fits files correctly then I think that the hea
 
 
 
-This was one of the most challenging bits of the whole task. I had to do a deep dive into what everything is and how it works. It required a lot of digging into Internet forums, some YouTube videos and the modules' documentations to really see how everything is structured. Once I had an idea of each components work (Pydantic, FastAPI, psycopg) I had to "merge" them together while making sure my code stays clean and readable.  
+&emsp;This was one of the most challenging bits of the whole task. I had to do a deep dive into what everything is and how it works. It required a lot of digging into Internet forums, some YouTube videos and the modules' documentations to really see how everything is structured. Once I had an idea of each components work (Pydantic, FastAPI, psycopg) I had to "merge" them together while making sure my code stays clean and readable.  
 
 I then started to implement the restpoints, though I saw many people defining the required functions with "async". I think this is not a big of an issue now since the functionality of the API is very simple and not many processes run at the same time (if I understand the concept of synchronous vs asynchronous functions correctly). 
 
@@ -50,7 +50,11 @@ I think the most significant part of this code is the assignment of unique IDs w
 
 &emsp;I think the clean part about my implementation is getting handled by the psycopg3 module itself. With the Supabase connection string as the only input parameter the process becomes rather simple yet directed.
 
- I saw many ways to structure validation errors, specifically 3, I implemented 2 of them. The parameters inputed by the user (at post/observations) are checked within the **main.py** using HTTPExteptions, but the validation also happens within the schema.py where the class *"Observations"* itself accepts only objects of a certain frequency range. I also saw an alternative where a method is implemented within the *"Observations"* class but I think the other two validation checks already work things out.
+ I saw many ways to structure validation errors, specifically 3, I implemented 2 of them. 
+ 
+ The parameters inputed by the user (at post/observations) are checked within the **main.py** using HTTPExteptions, but the validation also happens within the schema.py where the class *"Observations"* itself accepts only objects of a certain frequency range. 
+ 
+ I also saw an alternative where a method is implemented within the *"Observations"* class but I think the other two validation checks already work things out.
 
 
 
