@@ -19,6 +19,7 @@ Although overwhelming due to my first contact with PostgreSQL and the Supabase s
 
 
 ### Concerning .fits
+---
 
 If I understand the structure of .fits files correctly then I think that the header before each data section is a much faster and easier way of finding specific data through the whole file. While BLOBs can fit a lot of data, managing through it seems much more difficult.
 
@@ -46,7 +47,8 @@ I think the most significant part of this code is the assignment of unique IDs w
 
 
 
-### Connection and Validation solutions ---
+### Connection and Validation solutions
+---
 
 &emsp;I think the clean part about my implementation is getting handled by the psycopg3 module itself. With the Supabase connection string as the only input parameter the process becomes rather simple yet directed.
 
@@ -59,7 +61,7 @@ I think the most significant part of this code is the assignment of unique IDs w
 
 
 ## Part 3
-
+---
 
 
 &emsp;In a new script I implemented the autonomous worker that works around using two functions. One fetches the ID of the oldest pending observation or processing (if the program stops with no pending observations left) and the other uses the ID to update the specific observation's status. Through the process each required timestamp is updated  and the according URI is attached to each completed observation.  
@@ -69,6 +71,7 @@ It was difficult to understand how everything will work together and I still hav
 
 
 ### Concurrency Issues
+---
 
 &emsp;If some data happen to arrive at the exact same time then we would have a problem: 
 
