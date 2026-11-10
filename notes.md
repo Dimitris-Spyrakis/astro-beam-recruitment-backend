@@ -47,6 +47,7 @@ I think the most significant part of this code is the assignment of unique IDs w
 
 
 ### Connection and Validation solutions
+---
 
 &emsp;I think the clean part about my implementation is getting handled by the psycopg3 module itself. With the Supabase connection string as the only input parameter the process becomes rather simple yet directed.
 
