@@ -64,9 +64,13 @@ I think the clean part about my implementation is getting handled by the psycopg
 
 
 
-In a new script I implemented the autonomous worker that works around using two functions. One fetches the ID of the oldest pending observation or processing (if the program stops with no pending observations left) and the other uses the ID to update the specific observation's status. Through the process each required timestamp is updated  and the according URI is attached to each completed observation.  
+In a new script I implemented the autonomous worker that works around using two functions. One fetches the ID of the oldest pending observation or processing (if the program stops with no pending observations left) and the other uses the ID to update the specific observation's status. 
 
-It was difficult to understand how everything will work together and I still haven't fully built it because I couldn't implement the router logic. I used some Internet resources, though it was very limited and tried to mimic the implementation of Part 2. With the help of my collagues I was also able to tackle down some specific exceptions and run-time problems polishing my code as much as I could.
+Through the process each required timestamp is updated  and the according URI is attached to each completed observation.  
+
+It was difficult to understand how everything will work together and I still haven't fully built it because I couldn't implement the router logic. I used some Internet resources, though it was very limited and tried to mimic the implementation of Part 2. 
+
+With the help of my collagues I was also able to tackle down some specific exceptions and run-time problems polishing my code as much as I could.
 
 
 
