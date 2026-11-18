@@ -51,15 +51,15 @@ I think the answer lies to the Isolation mechanism which manages how readers and
 
 
 
-In this part I tried to implement the mock email notification once an observation has reached it's "Completed" status since I thought it would be very helpful for the observations' users to receive a directed message for the results of each request. 
+In this part I tried to implement the mock email notification once an observation has reached it's "Completed" status since I thought it would be very helpful for the observations' users to receive a directed message for the results of each request.
 
-Since each person has their own busy schedule, automating things could help keep everything organized without having to constantly, for example, check the webpage itself from time to time, worrying of forgetting it. 
+Since each person has their own busy schedule, automating things could help keep everything organized without having to constantly, for example, check the webpage itself from time to time, worrying of forgetting it.
 
-This could cause more stress than needed. An email is a very common way of getting notified nowadays, so simply checking one's phone is enough to keep them updated at any given time and day while they are parralelly working on other subjects.  
+This could cause more stress than needed. An email is a very common way of getting notified nowadays, so simply checking one's phone is enough to keep them updated at any given time and day while they are parralelly working on other subjects.
 
-The way I approached this was by building an *EmailSchema* class, a *ConfigConnection* item and a background function for sending emails all in the **telescope\_poller.py**. 
+The way I approached this was by building an *EmailSchema* class, a *ConfigConnection* item and a background function for sending emails all in the **telescope\_poller.py**.
 
-The reason for this was that I wanted the email function to be called from the *polling\_oldest\_obs\_comp* function so that the changing of status and email-sending are both done simutaneously. 
+The reason for this was that I wanted the email function to be called from the *polling\_oldest\_obs\_comp* function so that the changing of status and email-sending are both done simutaneously.
 
 I changed the function's hint to bool, so the email function can know if the status change was succesfull or not. Although I thought my approach would work I run into some issues in the code that I wasn't able to resolve:
 
@@ -71,7 +71,5 @@ I don't know in general if implementing the email functions and classes inside t
 
 
 
-## Part 4
-
-
+## Part 5
 
