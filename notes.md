@@ -113,3 +113,10 @@ I don't know in general if implementing the email functions and classes inside t
 ## Part 5
 
 
+
+The main benefit of switching from Kafka to a database polling system is that in a scenario where the telescope doesn't have access to the Internet it will still manage to run and fetch new or update current observations in the database. I assume that if the network drops the remaining observation waiting to be executed will have to wait for it to get back up, while polling the database secures the constant flow of processing observations.
+
+I think the tradeoffs to this approach could be for once the speed of fetching observations. The script can't run continuously due to performance issues, so a time gap is necessary. If we were to scale it up then the amount of incoming observation requests will by far succeed the number of those being processed thus making concurrency an even bigger problem. Also I think the database itself could have some performance issues due to the amount of observations piling up.
+
+
+

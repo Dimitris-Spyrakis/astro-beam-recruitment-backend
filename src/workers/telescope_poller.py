@@ -110,7 +110,7 @@ async def polling_oldest_obs_comp(conn: Conn, id: int) -> bool:
 
 # ------------------Polling---------------
 @app.get("/")
-async def main(conn: Conn, backTask: BackgroundTasks):
+async def main(conn: Conn, backTask: BackgroundTasks) -> None:
     email = ["random@gmail.com"]
     while True:
         # fetching oldest observation id
